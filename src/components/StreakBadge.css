@@ -1,0 +1,379 @@
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 184, 108, 0.1);
+  color: var(--accent-warning);
+  border: 2px solid var(--accent-warning);
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 
+    0 0 15px rgba(255, 184, 108, 0.2),
+    inset 0 0 20px rgba(255, 184, 108, 0.05);
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.streak-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 184, 108, 0.05) 4px,
+      rgba(255, 184, 108, 0.05) 8px
+    );
+}
+
+/* Tier 1: 10X - Cyan */
+.streak-badge--tier1 {
+  border-color: #00d9ff;
+  color: #00d9ff;
+  background: rgba(0, 217, 255, 0.1);
+  box-shadow: 
+    0 0 20px rgba(0, 217, 255, 0.3),
+    inset 0 0 30px rgba(0, 217, 255, 0.1);
+}
+
+.streak-badge--tier1::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(0, 217, 255, 0.1) 4px,
+      rgba(0, 217, 255, 0.1) 8px
+    );
+}
+
+/* Tier 2: 20X - Green */
+.streak-badge--tier2 {
+  border-color: #00ff41;
+  color: #00ff41;
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 65, 0.3),
+    inset 0 0 30px rgba(0, 255, 65, 0.1);
+  animation: tactical-pulse-tier2 2s ease-in-out infinite;
+}
+
+.streak-badge--tier2::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(0, 255, 65, 0.1) 4px,
+      rgba(0, 255, 65, 0.1) 8px
+    );
+}
+
+/* Tier 3: 30X - Lime */
+.streak-badge--tier3 {
+  border-color: #7FFF00;
+  color: #7FFF00;
+  background: rgba(127, 255, 0, 0.1);
+  box-shadow: 
+    0 0 20px rgba(127, 255, 0, 0.3),
+    inset 0 0 30px rgba(127, 255, 0, 0.1);
+  animation: tactical-pulse-tier3 1.8s ease-in-out infinite;
+}
+
+.streak-badge--tier3::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(127, 255, 0, 0.1) 4px,
+      rgba(127, 255, 0, 0.1) 8px
+    );
+}
+
+/* Tier 4: 40X - Yellow */
+.streak-badge--tier4 {
+  border-color: #FFD700;
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.3),
+    inset 0 0 30px rgba(255, 215, 0, 0.1);
+  animation: tactical-pulse-tier4 1.6s ease-in-out infinite;
+}
+
+.streak-badge--tier4::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 215, 0, 0.1) 4px,
+      rgba(255, 215, 0, 0.1) 8px
+    );
+}
+
+/* Tier 5: 50X - Orange */
+.streak-badge--tier5 {
+  border-color: #FF8C00;
+  color: #FF8C00;
+  background: rgba(255, 140, 0, 0.1);
+  box-shadow: 
+    0 0 20px rgba(255, 140, 0, 0.3),
+    inset 0 0 30px rgba(255, 140, 0, 0.1);
+  animation: tactical-pulse-tier5 1.4s ease-in-out infinite;
+}
+
+.streak-badge--tier5::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 140, 0, 0.1) 4px,
+      rgba(255, 140, 0, 0.1) 8px
+    );
+}
+
+/* Tier 6: 60X - Red-Orange */
+.streak-badge--tier6 {
+  border-color: #FF4500;
+  color: #FF4500;
+  background: rgba(255, 69, 0, 0.1);
+  box-shadow: 
+    0 0 25px rgba(255, 69, 0, 0.4),
+    inset 0 0 30px rgba(255, 69, 0, 0.1);
+  animation: tactical-pulse-tier6 1.2s ease-in-out infinite;
+}
+
+.streak-badge--tier6::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 69, 0, 0.1) 4px,
+      rgba(255, 69, 0, 0.1) 8px
+    );
+}
+
+/* Tier 7: 70X - Red */
+.streak-badge--tier7 {
+  border-color: #FF0000;
+  color: #FF0000;
+  background: rgba(255, 0, 0, 0.1);
+  box-shadow: 
+    0 0 25px rgba(255, 0, 0, 0.4),
+    inset 0 0 30px rgba(255, 0, 0, 0.1);
+  animation: tactical-pulse-tier7 1.0s ease-in-out infinite;
+}
+
+.streak-badge--tier7::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 0, 0, 0.1) 4px,
+      rgba(255, 0, 0, 0.1) 8px
+    );
+}
+
+/* Tier 8: 80X - Magenta */
+.streak-badge--tier8 {
+  border-color: #FF00FF;
+  color: #FF00FF;
+  background: rgba(255, 0, 255, 0.1);
+  box-shadow: 
+    0 0 30px rgba(255, 0, 255, 0.5),
+    inset 0 0 30px rgba(255, 0, 255, 0.1);
+  animation: tactical-pulse-tier8 0.8s ease-in-out infinite;
+}
+
+.streak-badge--tier8::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 0, 255, 0.15) 4px,
+      rgba(255, 0, 255, 0.15) 8px
+    );
+}
+
+/* Tier 9: 90X - Purple */
+.streak-badge--tier9 {
+  border-color: #9D00FF;
+  color: #9D00FF;
+  background: rgba(157, 0, 255, 0.1);
+  box-shadow: 
+    0 0 30px rgba(157, 0, 255, 0.5),
+    inset 0 0 30px rgba(157, 0, 255, 0.1);
+  animation: tactical-pulse-tier9 0.6s ease-in-out infinite;
+}
+
+.streak-badge--tier9::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(157, 0, 255, 0.15) 4px,
+      rgba(157, 0, 255, 0.15) 8px
+    );
+}
+
+/* Tier 10: 100X - White/Rainbow */
+.streak-badge--tier10 {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 0 35px rgba(255, 255, 255, 0.6),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  animation: tactical-pulse-tier10 0.4s ease-in-out infinite, rainbow-border 3s linear infinite;
+}
+
+.streak-badge--tier10::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 255, 255, 0.2) 4px,
+      rgba(255, 255, 255, 0.2) 8px
+    );
+}
+
+@keyframes tactical-pulse-tier2 {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(0, 255, 65, 0.3),
+      inset 0 0 30px rgba(0, 255, 65, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(0, 255, 65, 0.5),
+      inset 0 0 40px rgba(0, 255, 65, 0.15);
+  }
+}
+
+@keyframes tactical-pulse-tier3 {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(127, 255, 0, 0.3),
+      inset 0 0 30px rgba(127, 255, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(127, 255, 0, 0.5),
+      inset 0 0 40px rgba(127, 255, 0, 0.15);
+  }
+}
+
+@keyframes tactical-pulse-tier4 {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(255, 215, 0, 0.3),
+      inset 0 0 30px rgba(255, 215, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.5),
+      inset 0 0 40px rgba(255, 215, 0, 0.15);
+  }
+}
+
+@keyframes tactical-pulse-tier5 {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(255, 140, 0, 0.3),
+      inset 0 0 30px rgba(255, 140, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(255, 140, 0, 0.5),
+      inset 0 0 40px rgba(255, 140, 0, 0.15);
+  }
+}
+
+@keyframes tactical-pulse-tier6 {
+  0%, 100% {
+    box-shadow: 
+      0 0 25px rgba(255, 69, 0, 0.4),
+      inset 0 0 30px rgba(255, 69, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 35px rgba(255, 69, 0, 0.6),
+      inset 0 0 40px rgba(255, 69, 0, 0.15);
+  }
+}
+
+@keyframes tactical-pulse-tier7 {
+  0%, 100% {
+    box-shadow: 
+      0 0 25px rgba(255, 0, 0, 0.4),
+      inset 0 0 30px rgba(255, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 35px rgba(255, 0, 0, 0.6),
+      inset 0 0 40px rgba(255, 0, 0, 0.15);
+  }
+}
+
+@keyframes tactical-pulse-tier8 {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(255, 0, 255, 0.5),
+      inset 0 0 30px rgba(255, 0, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(255, 0, 255, 0.7),
+      inset 0 0 40px rgba(255, 0, 255, 0.2);
+  }
+}
+
+@keyframes tactical-pulse-tier9 {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(157, 0, 255, 0.5),
+      inset 0 0 30px rgba(157, 0, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(157, 0, 255, 0.7),
+      inset 0 0 40px rgba(157, 0, 255, 0.2);
+  }
+}
+
+@keyframes tactical-pulse-tier10 {
+  0%, 100% {
+    box-shadow: 
+      0 0 35px rgba(255, 255, 255, 0.6),
+      inset 0 0 30px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 50px rgba(255, 255, 255, 0.9),
+      inset 0 0 40px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes rainbow-border {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}

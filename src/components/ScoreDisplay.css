@@ -1,0 +1,53 @@
+.score-display {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 16px 20px;
+  background: rgba(0, 255, 65, 0.05);
+  border: 2px solid var(--accent-success);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 65, 0.2),
+    inset 0 0 20px rgba(0, 255, 65, 0.05);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  position: relative;
+}
+
+.score-display::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: -2px;
+  right: -2px;
+  border-top: 2px solid var(--accent-success);
+  border-right: 2px solid var(--accent-success);
+}
+
+.score-display::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  bottom: -2px;
+  left: -2px;
+  border-bottom: 2px solid var(--accent-success);
+  border-left: 2px solid var(--accent-success);
+}
+
+.score-display__label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.score-display span:last-child {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent-success);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}

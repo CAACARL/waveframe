@@ -1,0 +1,172 @@
+.game-over-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 32px;
+  padding: 32px;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 217, 255, 0.03) 2px,
+      rgba(0, 217, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 217, 255, 0.03) 2px,
+      rgba(0, 217, 255, 0.03) 4px
+    );
+  position: relative;
+}
+
+.game-over-screen::before {
+  content: 'TERMINATED';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 10px;
+  color: var(--accent-danger);
+  letter-spacing: 2px;
+  border: 1px solid var(--accent-danger);
+  padding: 4px 12px;
+  background: rgba(255, 71, 87, 0.1);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  animation: blink 2s infinite;
+}
+
+.game-over-screen__title {
+  font-size: 72px;
+  font-weight: 900;
+  margin: 0;
+  color: var(--accent-danger);
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  position: relative;
+  padding: 20px 60px;
+  background: rgba(255, 71, 87, 0.1);
+  border: 3px solid var(--accent-danger);
+  clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+  box-shadow: 
+    inset 0 0 40px rgba(255, 71, 87, 0.1),
+    0 0 40px rgba(255, 71, 87, 0.3);
+}
+
+.game-over-screen__scores {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  padding: 32px 50px;
+  background: rgba(10, 14, 20, 0.8);
+  border: 2px solid var(--border-accent);
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+  box-shadow: 
+    0 0 20px rgba(0, 217, 255, 0.2),
+    inset 0 0 40px rgba(0, 217, 255, 0.05);
+}
+
+.game-over-screen__score {
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  color: var(--text-primary);
+}
+
+.game-over-screen__score-label {
+  font-size: 14px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.game-over-screen__score span:last-child {
+  color: var(--accent-success);
+  font-size: 42px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.game-over-screen__high-score {
+  font-size: 20px;
+  padding: 12px 28px;
+  background: rgba(255, 184, 108, 0.1);
+  border: 2px solid var(--accent-warning);
+  font-weight: 700;
+  color: var(--accent-warning);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.game-over-screen__controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game-over-screen__hint {
+  color: var(--text-dim);
+  font-size: 11px;
+  opacity: 0.6;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.game-over-screen__name-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 40px;
+  background: rgba(0, 217, 255, 0.05);
+  border: 2px solid var(--accent-primary);
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+}
+
+.game-over-screen__name-label {
+  font-size: 12px;
+  color: var(--accent-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.game-over-screen__name-input {
+  width: 300px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--accent-primary);
+  color: var(--text-primary);
+  font-size: 16px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.game-over-screen__name-input:focus {
+  border-color: var(--accent-success);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+  background: rgba(0, 255, 65, 0.05);
+}
+
+.game-over-screen__name-input::placeholder {
+  color: var(--text-dim);
+  opacity: 0.5;
+}

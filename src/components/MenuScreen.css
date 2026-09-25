@@ -1,0 +1,179 @@
+.menu-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 40px;
+  padding: 32px;
+  position: relative;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 217, 255, 0.03) 2px, rgba(0, 217, 255, 0.03) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 217, 255, 0.03) 2px, rgba(0, 217, 255, 0.03) 4px);
+}
+
+.menu-screen__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.menu-screen__controls p {
+  color: var(--text-dim);
+  font-size: 11px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.menu-screen__badge {
+  position: absolute;
+  top: 20px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.menu-screen__badge--rankings {
+  left: 20px;
+  color: var(--accent-success);
+  border: 1px solid var(--accent-success);
+  background: rgba(0, 255, 65, 0.1);
+}
+
+.menu-screen__badge--rankings:hover {
+  background: rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  transform: translateY(-2px);
+}
+
+.menu-screen__badge--rankings:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.menu-screen__badge--exit {
+  right: 20px;
+  color: var(--accent-danger);
+  border: 1px solid var(--accent-danger);
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.menu-screen__badge--exit:hover {
+  background: rgba(255, 71, 87, 0.2);
+  box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
+  transform: translateY(-2px);
+}
+
+.menu-screen__badge--exit:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+.menu-screen__title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  position: relative;
+  padding: 20px 40px;
+  background: rgba(0, 217, 255, 0.05);
+  border: 2px solid var(--accent-primary);
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+  box-shadow: 
+    inset 0 0 40px rgba(0, 217, 255, 0.1),
+    0 0 30px rgba(0, 217, 255, 0.2);
+}
+
+.menu-screen__title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 0%, var(--accent-primary) 50%, transparent 100%);
+  opacity: 0.1;
+  animation: scan-horizontal 3s linear infinite;
+}
+
+@keyframes scan-horizontal {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.menu-screen__instructions {
+  max-width: 500px;
+  text-align: center;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 13px;
+  padding: 20px 30px;
+  background: rgba(45, 52, 64, 0.5);
+  border-left: 3px solid var(--accent-primary);
+  border-right: 3px solid var(--accent-primary);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.menu-screen__instructions::before,
+.menu-screen__instructions::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent-primary);
+}
+
+.menu-screen__instructions::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.menu-screen__instructions::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+.menu-screen__high-score {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-warning);
+  padding: 16px 32px;
+  background: rgba(255, 184, 108, 0.1);
+  border: 2px solid var(--accent-warning);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.menu-screen__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.menu-screen__controls p {
+  color: var(--text-dim);
+  font-size: 11px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

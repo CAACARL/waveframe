@@ -1,0 +1,61 @@
+:root {
+  /* Tactical Military Palette */
+  --bg-primary: #0a0e14;
+  --bg-secondary: #13171d;
+  --bg-tertiary: #1c2128;
+  --text-primary: #e6e8eb;
+  --text-secondary: #8b92a0;
+  --text-dim: #5c6370;
+  --accent-primary: #00d9ff;
+  --accent-warning: #ffb86c;
+  --accent-success: #00ff41;
+  --accent-danger: #ff4757;
+  --border-color: #2d3440;
+  --border-accent: #00d9ff;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  background: #0a0e14;
+  color: var(--text-primary);
+  line-height: 1.4;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  border: none;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.3; }
+}

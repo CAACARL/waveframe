@@ -1,0 +1,36 @@
+.lives-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 71, 87, 0.1);
+  border: 2px solid var(--accent-danger);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  box-shadow: 
+    0 0 15px rgba(255, 71, 87, 0.2),
+    inset 0 0 20px rgba(255, 71, 87, 0.05);
+  position: relative;
+}
+
+.lives-display::before {
+  content: 'STATUS';
+  position: absolute;
+  top: -2px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--accent-danger);
+  background: var(--bg-primary);
+  padding: 1px 6px;
+  letter-spacing: 2px;
+}
+
+.lives-display__heart {
+  font-size: 20px;
+  transition: all 0.2s;
+  filter: drop-shadow(0 0 6px rgba(255, 71, 87, 0.5));
+}
+
+.lives-display__heart--lost {
+  opacity: 0.15;
+  filter: grayscale(1);
+}
