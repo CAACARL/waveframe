@@ -1,0 +1,103 @@
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.confirm-modal {
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-danger);
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    0 0 40px rgba(255, 71, 87, 0.4),
+    inset 0 0 60px rgba(255, 71, 87, 0.05);
+  animation: slideIn 0.3s ease;
+  position: relative;
+}
+
+.confirm-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 71, 87, 0.03) 2px,
+      rgba(255, 71, 87, 0.03) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.confirm-modal__header {
+  padding: 20px 30px;
+  border-bottom: 2px solid var(--accent-danger);
+  background: rgba(255, 71, 87, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.confirm-modal__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-danger);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+.confirm-modal__content {
+  padding: 40px 30px;
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.confirm-modal__actions {
+  padding: 20px 30px 30px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}

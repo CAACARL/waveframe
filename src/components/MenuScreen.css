@@ -177,3 +177,36 @@
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+.menu-screen__footer {
+  position: absolute;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--text-dim);
+  opacity: 0.6;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.menu-screen__disclaimer {
+  color: var(--text-dim);
+}
+
+.menu-screen__separator {
+  color: var(--text-dim);
+  opacity: 0.4;
+}
+
+.menu-screen__link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.menu-screen__link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}

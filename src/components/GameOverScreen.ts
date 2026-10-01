@@ -53,6 +53,7 @@ export function createGameOverScreen(props: GameOverScreenProps): GameOverScreen
   const menuButton = createButton({
     text: 'Main Menu',
     onClick: props.onMenu,
+    variant: 'secondary',
   });
 
   const hint = document.createElement('p');

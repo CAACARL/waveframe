@@ -4,6 +4,7 @@ export interface ButtonProps {
   text: string;
   onClick: () => void;
   disabled?: boolean;
+  variant?: 'primary' | 'secondary' | 'danger' | 'danger-inverted';
 }
 
 export interface Button {
@@ -14,7 +15,15 @@ export interface Button {
 
 export function createButton(props: ButtonProps): Button {
   const el = document.createElement('button');
-  el.className = 'button';
+  let className = 'button';
+  if (props.variant === 'secondary') {
+    className = 'button button--secondary';
+  } else if (props.variant === 'danger') {
+    className = 'button button--danger';
+  } else if (props.variant === 'danger-inverted') {
+    className = 'button button--danger-inverted';
+  }
+  el.className = className;
   el.textContent = props.text;
   el.disabled = props.disabled || false;
 

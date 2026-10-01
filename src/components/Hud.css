@@ -60,3 +60,16 @@
   position: relative;
   z-index: 1;
 }
+
+.hud__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.hud__quit {
+  flex-shrink: 0;
+}

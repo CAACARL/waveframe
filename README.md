@@ -335,11 +335,13 @@ window.gestureRecognizer.recognizeGesture(landmarks);
 
 ## License
 
-MIT
+MIT (see [LICENSE](LICENSE) file)
+
+This project uses third-party software subject to their own licenses. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for details.
 
 ## Credits
 
 Built with:
-- [Vite](https://vite.dev/) - Build tool
-- [MediaPipe](https://developers.google.com/mediapipe) - Hand tracking
+- [Vite](https://vite.dev/) - Build tool (MIT License)
+- [MediaPipe](https://developers.google.com/mediapipe) by Google - Hand tracking and gesture recognition (Apache 2.0 License)
 - TypeScript & Vanilla JS - No frameworks

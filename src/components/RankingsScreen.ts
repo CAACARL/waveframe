@@ -137,7 +137,7 @@ export function createRankingsScreen(props: RankingsScreenProps): RankingsScreen
   tableContainer.appendChild(table);
 
   const backButton = createButton({
-    text: 'Back to Menu',
+    text: 'Main Menu',
     onClick: props.onBack,
   });
 

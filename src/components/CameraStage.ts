@@ -1,9 +1,10 @@
-import './CameraStage.css';
-import { CAMERA_WIDTH, CAMERA_HEIGHT } from '../services/constants';
-import { createButton } from './Button';
+import "./CameraStage.css";
+import { CAMERA_WIDTH, CAMERA_HEIGHT } from "../services/constants";
+import { createButton } from "./Button";
 
 export interface CameraStageProps {
   onVideoReady?: (video: HTMLVideoElement) => void;
+  onBackToMenu?: () => void;
 }
 
 export interface CameraStage {
@@ -15,23 +16,46 @@ export interface CameraStage {
 }
 
 export function createCameraStage(props: CameraStageProps): CameraStage {
-  const el = document.createElement('div');
-  el.className = 'camera-stage';
+  const el = document.createElement("div");
+  el.className = "camera-stage";
 
-  const placeholder = document.createElement('div');
-  placeholder.className = 'camera-stage__placeholder';
+  const placeholder = document.createElement("div");
+  placeholder.className = "camera-stage__placeholder";
+
+  const disclaimer = document.createElement("div");
+  disclaimer.className = "camera-stage__disclaimer";
+  disclaimer.innerHTML =
+    "Your camera feed is processed locally on your device.<br>No video or images are stored or transmitted.";
+
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.className = "camera-stage__buttons";
 
   const startButton = createButton({
-    text: 'Start Camera',
+    text: "Start Camera",
     onClick: initCamera,
   });
 
-  placeholder.appendChild(startButton.el);
+  let backButton: ReturnType<typeof createButton> | null = null;
+  if (props.onBackToMenu) {
+    backButton = createButton({
+      text: "Main Menu",
+      onClick: props.onBackToMenu,
+      variant: "secondary",
+    });
+  }
+
+  buttonsContainer.appendChild(startButton.el);
+  if (backButton) {
+    buttonsContainer.appendChild(backButton.el);
+  }
+
+  placeholder.appendChild(disclaimer);
+  placeholder.appendChild(buttonsContainer);
   el.appendChild(placeholder);
 
   let video: HTMLVideoElement | null = null;
-  const canvas = document.createElement('canvas');
-  canvas.className = 'camera-stage__canvas';
+  const canvas = document.createElement("canvas");
+  canvas.className = "camera-stage__canvas";
   canvas.width = CAMERA_WIDTH;
   canvas.height = CAMERA_HEIGHT;
 
@@ -46,14 +70,14 @@ export function createCameraStage(props: CameraStageProps): CameraStage {
         },
       });
 
-      video = document.createElement('video');
-      video.className = 'camera-stage__video';
+      video = document.createElement("video");
+      video.className = "camera-stage__video";
       video.srcObject = stream;
       video.autoplay = true;
       video.muted = true;
       video.playsInline = true;
 
-      video.addEventListener('loadedmetadata', () => {
+      video.addEventListener("loadedmetadata", () => {
         el.removeChild(placeholder);
         if (video) {
           el.appendChild(video);
@@ -62,18 +86,18 @@ export function createCameraStage(props: CameraStageProps): CameraStage {
         }
       });
     } catch (error) {
-      const errorEl = document.createElement('div');
-      errorEl.className = 'camera-stage__error';
-      
-      if (error instanceof Error && error.name === 'NotAllowedError') {
-        errorEl.textContent = 'Camera permission denied. Please allow camera access and refresh.';
-      } else if (error instanceof Error && error.name === 'NotFoundError') {
-        errorEl.textContent = 'No camera found. Please connect a camera and refresh.';
+      const errorEl = document.createElement("div");
+      errorEl.className = "camera-stage__error";
+
+      if (error instanceof Error && error.name === "NotAllowedError") {
+        errorEl.textContent = "Camera permission denied. Please allow camera access and refresh.";
+      } else if (error instanceof Error && error.name === "NotFoundError") {
+        errorEl.textContent = "No camera found. Please connect a camera and refresh.";
       } else {
-        errorEl.textContent = 'Camera error. Please check your camera and refresh.';
+        errorEl.textContent = "Camera error. Please check your camera and refresh.";
       }
 
-      placeholder.innerHTML = '';
+      placeholder.innerHTML = "";
       placeholder.appendChild(errorEl);
     }
   }
@@ -85,9 +109,12 @@ export function createCameraStage(props: CameraStageProps): CameraStage {
     },
     destroy() {
       if (stream) {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
       }
       startButton.destroy();
+      if (backButton) {
+        backButton.destroy();
+      }
     },
     getCanvas() {
       return canvas;

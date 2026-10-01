@@ -1,0 +1,27 @@
+.quit-button {
+  padding: 10px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-danger);
+  background: rgba(255, 71, 87, 0.1);
+  border: 2px solid var(--accent-danger);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  box-shadow: 
+    0 0 20px rgba(255, 71, 87, 0.2),
+    inset 0 0 20px rgba(255, 71, 87, 0.05);
+}
+
+.quit-button:hover {
+  background: rgba(255, 71, 87, 0.2);
+  box-shadow: 
+    0 0 30px rgba(255, 71, 87, 0.4),
+    inset 0 0 30px rgba(255, 71, 87, 0.1);
+}
+
+.quit-button:active {
+  background: rgba(255, 71, 87, 0.3);
+}

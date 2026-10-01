@@ -67,3 +67,98 @@
   background: rgba(45, 52, 64, 0.5);
   box-shadow: none;
 }
+
+.button--secondary {
+  background: rgba(0, 217, 255, 0.1);
+  border: 2px solid var(--accent-primary);
+  color: var(--text-primary);
+  box-shadow: 
+    0 0 20px rgba(0, 217, 255, 0.2),
+    inset 0 0 20px rgba(0, 217, 255, 0.05);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.button--secondary::before {
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 217, 255, 0.05) 2px,
+      rgba(0, 217, 255, 0.05) 4px
+    );
+}
+
+.button--secondary:hover {
+  background: rgba(0, 217, 255, 0.15);
+  box-shadow: 
+    0 0 30px rgba(0, 217, 255, 0.4),
+    inset 0 0 30px rgba(0, 217, 255, 0.1);
+}
+
+.button--secondary:active {
+  background: rgba(0, 217, 255, 0.2);
+}
+
+.button--danger {
+  background: rgba(255, 71, 87, 0.1);
+  border: 2px solid var(--accent-danger);
+  color: var(--accent-danger);
+  box-shadow: 
+    0 0 20px rgba(255, 71, 87, 0.2),
+    inset 0 0 20px rgba(255, 71, 87, 0.05);
+}
+
+.button--danger::before {
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 71, 87, 0.05) 2px,
+      rgba(255, 71, 87, 0.05) 4px
+    );
+}
+
+.button--danger:hover {
+  background: rgba(255, 71, 87, 0.2);
+  box-shadow: 
+    0 0 30px rgba(255, 71, 87, 0.4),
+    inset 0 0 30px rgba(255, 71, 87, 0.1);
+}
+
+.button--danger:active {
+  background: rgba(255, 71, 87, 0.3);
+}
+
+.button--danger-inverted {
+  background: rgba(255, 71, 87, 0.1);
+  border: 2px solid var(--accent-danger);
+  color: var(--accent-danger);
+  box-shadow: 
+    0 0 20px rgba(255, 71, 87, 0.2),
+    inset 0 0 20px rgba(255, 71, 87, 0.05);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.button--danger-inverted::before {
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 71, 87, 0.05) 2px,
+      rgba(255, 71, 87, 0.05) 4px
+    );
+}
+
+.button--danger-inverted:hover {
+  background: rgba(255, 71, 87, 0.2);
+  box-shadow: 
+    0 0 30px rgba(255, 71, 87, 0.4),
+    inset 0 0 30px rgba(255, 71, 87, 0.1);
+}
+
+.button--danger-inverted:active {
+  background: rgba(255, 71, 87, 0.3);
+}

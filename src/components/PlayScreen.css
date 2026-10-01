@@ -46,3 +46,14 @@
   align-self: start;
   justify-self: end;
 }
+
+/* Quit button - above HUD on left */
+.play-screen__quit {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  justify-self: start;
+  padding-left: 40px;
+  padding-top: 20px;
+  z-index: 10;
+}

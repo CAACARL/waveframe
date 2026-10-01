@@ -7,6 +7,8 @@ import { createStatusBar } from './StatusBar';
 import { createCountdown } from './Countdown';
 import { createTargetDrawer } from './TargetDrawer';
 import { createLoadingIndicator } from './LoadingIndicator';
+import { createQuitButton } from './QuitButton';
+import { createConfirmModal } from './ConfirmModal';
 import type { HandOverlay } from './HandOverlay';
 import type { Hud } from './Hud';
 import type { FeedbackFlash } from './FeedbackFlash';
@@ -14,6 +16,8 @@ import type { StatusBar } from './StatusBar';
 import type { Countdown } from './Countdown';
 import type { TargetDrawer } from './TargetDrawer';
 import type { LoadingIndicator } from './LoadingIndicator';
+import type { QuitButton } from './QuitButton';
+import type { ConfirmModal } from './ConfirmModal';
 import { initTracker, stopTracker, hasHand, getFps, setLowPowerMode, getLandmarks, startTracking } from '../services/tracker';
 import { recognizeGesture } from '../services/gestureRecognizer';
 import { dispatch, getState, subscribe } from '../services/gameStore';
@@ -39,6 +43,8 @@ export function createPlayScreen(_props: PlayScreenProps): PlayScreen {
   let countdown: Countdown | null = null;
   let targetDrawer: TargetDrawer | null = null;
   let loadingIndicator: LoadingIndicator | null = null;
+  let quitButton: QuitButton | null = null;
+  let confirmModal: ConfirmModal | null = null;
   let animationId: number | null = null;
   let unsubscribe: (() => void) | null = null;
   
@@ -55,6 +61,7 @@ export function createPlayScreen(_props: PlayScreenProps): PlayScreen {
   let roundStartTime = 0;
 
   const cameraStage = createCameraStage({
+    onBackToMenu: _props.onQuit,
     onVideoReady: async (video) => {
       // Show loading indicator starting at 0%
       loadingIndicator = createLoadingIndicator({
@@ -131,10 +138,42 @@ export function createPlayScreen(_props: PlayScreenProps): PlayScreen {
           shape: state.currentTarget,
         });
 
+        quitButton = createQuitButton({
+          onClick: () => {
+            // Show confirmation modal
+            confirmModal = createConfirmModal({
+              title: 'QUIT GAME',
+              message: 'Are you sure you want to quit? All progress will be lost.',
+              onConfirm: () => {
+                if (confirmModal) {
+                  confirmModal.destroy();
+                  el.removeChild(confirmModal.el);
+                  confirmModal = null;
+                }
+                _props.onQuit();
+              },
+              onCancel: () => {
+                if (confirmModal) {
+                  confirmModal.destroy();
+                  el.removeChild(confirmModal.el);
+                  confirmModal = null;
+                }
+              },
+            });
+            el.appendChild(confirmModal.el);
+          },
+        });
+
+        const quitContainer = document.createElement('div');
+        quitContainer.className = 'play-screen__quit';
+        quitContainer.appendChild(quitButton.el);
+
+        el.appendChild(cameraStage.el);
         el.appendChild(hud.el);
         el.appendChild(feedbackFlash.el);
         el.appendChild(statusBar.el);
         el.appendChild(targetDrawer.el);
+        el.appendChild(quitContainer);
 
         // Subscribe to store changes
         unsubscribe = subscribe(updateFromStore);
@@ -369,6 +408,12 @@ export function createPlayScreen(_props: PlayScreenProps): PlayScreen {
       }
       if (loadingIndicator) {
         loadingIndicator.destroy();
+      }
+      if (quitButton) {
+        quitButton.destroy();
+      }
+      if (confirmModal) {
+        confirmModal.destroy();
       }
       stopTracker();
       cameraStage.destroy();
