@@ -34,14 +34,14 @@ export function createMenuScreen(props: MenuScreenProps): MenuScreen {
   controls.className = "menu-screen__controls";
 
   const startButton = createButton({
-    text: "Start Game",
+    text: "Start",
     onClick: props.onStart,
   });
 
   const hint = document.createElement("p");
   hint.style.color = "var(--text-secondary)";
   hint.style.fontSize = "14px";
-  hint.textContent = "Press Space to start";
+  hint.textContent = "Click start or press space to begin.";
 
   controls.appendChild(startButton.el);
   controls.appendChild(hint);
