@@ -41,7 +41,7 @@ export function createMenuScreen(props: MenuScreenProps): MenuScreen {
   const hint = document.createElement("p");
   hint.style.color = "var(--text-secondary)";
   hint.style.fontSize = "14px";
-  hint.textContent = "Click start or press space to begin.";
+  hint.textContent = "CLICK START OR PRESS SPACE TO BEGIN";
 
   controls.appendChild(startButton.el);
   controls.appendChild(hint);
