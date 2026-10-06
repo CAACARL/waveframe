@@ -109,6 +109,10 @@
   font-size: 14px;
 }
 
+.modal__content p:first-child {
+  text-align: center;
+}
+
 .modal__content ul {
   margin-left: 20px;
   margin-bottom: 16px;

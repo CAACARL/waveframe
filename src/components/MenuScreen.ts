@@ -1,6 +1,6 @@
-import './MenuScreen.css';
-import { createButton } from './Button';
-import { createModal, type Modal } from './Modal';
+import "./MenuScreen.css";
+import { createButton } from "./Button";
+import { createModal, type Modal } from "./Modal";
 
 export interface MenuScreenProps {
   highScore: number;
@@ -16,31 +16,32 @@ export interface MenuScreen {
 }
 
 export function createMenuScreen(props: MenuScreenProps): MenuScreen {
-  const el = document.createElement('div');
-  el.className = 'menu-screen';
+  const el = document.createElement("div");
+  el.className = "menu-screen";
 
   let modal: Modal | null = null;
 
-  const title = document.createElement('h1');
-  title.className = 'menu-screen__title';
-  title.textContent = 'WAVEFRAME';
+  const title = document.createElement("h1");
+  title.className = "menu-screen__title";
+  title.textContent = "WAVEFRAME";
 
-  const instructions = document.createElement('p');
-  instructions.className = 'menu-screen__instructions';
-  instructions.textContent = "Make hand gestures to match the target. Do that with your fingers facing the camera, though, 'cause idk how to make it register backhands XD";
+  const instructions = document.createElement("p");
+  instructions.className = "menu-screen__instructions";
+  instructions.textContent =
+    "Make hand gestures to match the target. Do that with your fingers facing the camera, though, 'cause idk how to make it register backhands XD";
 
-  const controls = document.createElement('div');
-  controls.className = 'menu-screen__controls';
+  const controls = document.createElement("div");
+  controls.className = "menu-screen__controls";
 
   const startButton = createButton({
-    text: 'Start Game',
+    text: "Start Game",
     onClick: props.onStart,
   });
 
-  const hint = document.createElement('p');
-  hint.style.color = 'var(--text-secondary)';
-  hint.style.fontSize = '14px';
-  hint.textContent = 'Press Space to start';
+  const hint = document.createElement("p");
+  hint.style.color = "var(--text-secondary)";
+  hint.style.fontSize = "14px";
+  hint.textContent = "Press Space to start";
 
   controls.appendChild(startButton.el);
   controls.appendChild(hint);
@@ -50,48 +51,48 @@ export function createMenuScreen(props: MenuScreenProps): MenuScreen {
   el.appendChild(controls);
 
   // Make corner badges clickable
-  const rankingsBadge = document.createElement('div');
-  rankingsBadge.className = 'menu-screen__badge menu-screen__badge--rankings';
-  rankingsBadge.textContent = 'RANKINGS';
+  const rankingsBadge = document.createElement("div");
+  rankingsBadge.className = "menu-screen__badge menu-screen__badge--rankings";
+  rankingsBadge.textContent = "RANKINGS";
   rankingsBadge.onclick = props.onShowRankings;
 
-  const exitBadge = document.createElement('div');
-  exitBadge.className = 'menu-screen__badge menu-screen__badge--exit';
-  exitBadge.textContent = 'EXIT';
+  const exitBadge = document.createElement("div");
+  exitBadge.className = "menu-screen__badge menu-screen__badge--exit";
+  exitBadge.textContent = "EXIT";
   exitBadge.onclick = props.onExit;
 
   el.appendChild(rankingsBadge);
   el.appendChild(exitBadge);
 
   // Footer with legal links
-  const footer = document.createElement('div');
-  footer.className = 'menu-screen__footer';
-  
-  const privacyLink = document.createElement('a');
-  privacyLink.className = 'menu-screen__link';
-  privacyLink.textContent = 'Privacy';
-  privacyLink.href = '#';
-  privacyLink.onclick = (e) => {
-    e.preventDefault();
-    showPrivacyModal();
-  };
-  
-  const sep = document.createElement('span');
-  sep.className = 'menu-screen__separator';
-  sep.textContent = '•';
-  
-  const termsLink = document.createElement('a');
-  termsLink.className = 'menu-screen__link';
-  termsLink.textContent = 'Terms';
-  termsLink.href = '#';
+  const footer = document.createElement("div");
+  footer.className = "menu-screen__footer";
+
+  const termsLink = document.createElement("a");
+  termsLink.className = "menu-screen__link";
+  termsLink.textContent = "Terms";
+  termsLink.href = "#";
   termsLink.onclick = (e) => {
     e.preventDefault();
     showTermsModal();
   };
-  
-  footer.appendChild(privacyLink);
-  footer.appendChild(sep);
+
+  const sep = document.createElement("span");
+  sep.className = "menu-screen__separator";
+  sep.textContent = "•";
+
+  const privacyLink = document.createElement("a");
+  privacyLink.className = "menu-screen__link";
+  privacyLink.textContent = "Privacy";
+  privacyLink.href = "#";
+  privacyLink.onclick = (e) => {
+    e.preventDefault();
+    showPrivacyModal();
+  };
+
   footer.appendChild(termsLink);
+  footer.appendChild(sep);
+  footer.appendChild(privacyLink);
 
   el.appendChild(footer);
 
@@ -101,7 +102,7 @@ export function createMenuScreen(props: MenuScreenProps): MenuScreen {
       el.removeChild(modal.el);
     }
     modal = createModal({
-      title: 'Privacy Policy',
+      title: "Privacy Policy",
       content: getPrivacyContent(),
       onClose: () => {
         if (modal) {
@@ -120,7 +121,7 @@ export function createMenuScreen(props: MenuScreenProps): MenuScreen {
       el.removeChild(modal.el);
     }
     modal = createModal({
-      title: 'Terms of Service',
+      title: "Terms of Service",
       content: getTermsContent(),
       onClose: () => {
         if (modal) {
@@ -194,7 +195,6 @@ function getPrivacyContent(): string {
 
 function getTermsContent(): string {
   return `
-    <p><strong>Last Updated: October 1, 2026</strong></p>
     <p>By using Waveframe, you agree to these Terms of Service.</p>
     <p>Waveframe is a free open-source gesture game made as a hobby project, provided free of charge for entertainment, experimentation, and educational purposes. The game may be changed, interrupted, or discontinued at any time without notice.</p>
     

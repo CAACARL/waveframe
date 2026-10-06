@@ -1,5 +1,6 @@
 import { STARTING_HP, BASE_DAMAGE, ROUND_TIME_MS, PASS_SCORE, SHAPES, type Shape } from './constants';
 import { saveHighScore, loadHighScore, saveGameRecord } from './storage';
+import { soundManager } from './sounds';
 
 export type GameState = 'menu' | 'countdown' | 'playing' | 'roundResult' | 'nameInput' | 'gameOver';
 
@@ -92,13 +93,15 @@ export function dispatch(action: Action): void {
           ...state,
           gameState: 'playing',
           score: 0,
-          hp: STARTING_HP,
+          hp: STARTING_HP, // Always reset to full HP
           consecutiveFails: 0,
           streak: 0,
           maxStreak: 0,
           roundsCompleted: 0,
           currentTarget: getRandomShape(),
           roundStartTime: Date.now(),
+          pendingScore: null,
+          pendingStreak: null,
         };
       }
       break;
@@ -118,6 +121,11 @@ export function dispatch(action: Action): void {
           const newStreak = state.streak + 1;
           const newMaxStreak = Math.max(state.maxStreak, newStreak);
           const newRoundsCompleted = state.roundsCompleted + 1;
+
+          // Play combo milestone sound at 10x, 20x, 30x, etc.
+          if (newStreak % 10 === 0 && newStreak > 0) {
+            soundManager.playComboMilestone();
+          }
 
           state = {
             ...state,
@@ -180,6 +188,8 @@ export function dispatch(action: Action): void {
         console.log(`TIMEOUT! Damage: ${damage} HP (${newConsecutiveFails}x consecutive fails). HP: ${state.hp} -> ${newHp}`);
 
         if (newHp <= 0) {
+          // Play game over sound
+          soundManager.playGameOver();
           // Go to name input screen first - use maxStreak instead of current streak
           console.log('Game over - storing pending score:', state.score, 'and max streak:', state.maxStreak);
           state = {
@@ -192,6 +202,8 @@ export function dispatch(action: Action): void {
             pendingStreak: state.maxStreak, // Use maxStreak, not current streak
           };
         } else {
+          // Play fail sound for timeout
+          soundManager.playFail();
           state = {
             ...state,
             hp: newHp,

@@ -11,6 +11,32 @@
   background: 
     repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 217, 255, 0.03) 2px, rgba(0, 217, 255, 0.03) 4px),
     repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 217, 255, 0.03) 2px, rgba(0, 217, 255, 0.03) 4px);
+  overflow: hidden;
+}
+
+.menu-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 217, 255, 0.08) 40px, rgba(0, 217, 255, 0.08) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 217, 255, 0.08) 40px, rgba(0, 217, 255, 0.08) 41px);
+  animation: grid-scan 12s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+@keyframes grid-scan {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
 }
 
 .menu-screen__controls {
@@ -19,6 +45,8 @@
   gap: 16px;
   align-items: center;
   margin-top: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .menu-screen__controls p {
@@ -39,6 +67,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
+  z-index: 1;
 }
 
 .menu-screen__badge--rankings {
@@ -92,6 +121,7 @@
   box-shadow: 
     inset 0 0 40px rgba(0, 217, 255, 0.1),
     0 0 30px rgba(0, 217, 255, 0.2);
+  z-index: 1;
 }
 
 .menu-screen__title::before {
@@ -125,6 +155,7 @@
   position: relative;
   text-transform: uppercase;
   letter-spacing: 1px;
+  z-index: 1;
 }
 
 .menu-screen__instructions::before,
@@ -189,6 +220,7 @@
   opacity: 0.6;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  z-index: 1;
 }
 
 .menu-screen__disclaimer {

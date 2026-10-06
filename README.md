@@ -9,9 +9,11 @@ A tactical gesture-based reflex game with real-time hand tracking. Match target 
 - ⚡ **10-Second Rounds** with visual timer countdown
 - 💚 **HP System** with escalating damage for consecutive failures
 - 🔥 **Combo Multipliers** (up to 100X+) with color-coded tiers
-- 🏆 **Global Leaderboard** with podium rankings and game history
-- 🎯 **Tactical UI** with military-style HUD and angled components
+- 🏆 **Local Leaderboard** with podium rankings and game history
+- 🎯 **Tactical UI** with cyberpunk-style HUD and angled components
 - 🎮 **Hand Skeleton Visualization** with cyan wireframe overlay
+- 🔊 **Dynamic Sound Effects** for success, failure, combo milestones, and game over
+- 🎨 **Animated Grid Background** with subtle cyan grid scan effect
 
 ## Quick Start
 
@@ -62,6 +64,8 @@ npm run preview
 
 ### Controls
 
+- **Space**: Start game from menu or restart from game over
+- **Escape**: Return to menu from any screen
 - **Click START GAME**: Start game from menu
 - **Click RANKINGS**: View leaderboard with top 10 performances
 - **Click EXIT**: Close the application
@@ -119,7 +123,10 @@ export function createComponent(props: Props): Component {
 - `LoadingIndicator`: Initialization progress bar with loading stages
 - `Countdown`: 3-2-1-GO countdown before game starts
 - `StatusBar`: Hand detection status indicator
+- `QuitButton`: Mounted quit button with traffic light-style holder
 - `Button`: Shared tactical button component with angled corners
+- `Modal`: Generic modal for privacy and terms
+- `ConfirmModal`: Confirmation dialog for quitting
 
 ### Services (`src/services/`)
 
@@ -147,6 +154,15 @@ Services are pure modules with no DOM manipulation:
 - Wraps localStorage with try/catch and in-memory fallback
 - Stores: highScore, gameHistory (top 10 performances with name, score, streak, date)
 - Backwards compatible with old localStorage format
+
+**sounds** - Audio feedback
+- Web Audio API-based sound generation
+- Success sound: Upward chime (C5 → E5 → G5)
+- Fail sound: Downward tone (Eb4 → Ab3)
+- Game over sound: Dramatic descending sequence
+- Combo milestone sound: Celebratory fanfare (every 10x streak)
+- Quit sound: Short dismissal tone
+- Auto-initializes on first user interaction
 
 **constants** - Tunable parameters
 - Game, tracking, and gesture parameters
@@ -180,6 +196,7 @@ Only `gameStore` mutates game state. Components are pure presentational.
 ### Combo System
 - Build streaks by matching consecutive gestures
 - Score multiplier = streak count (5 streak = 5X multiplier)
+- **Combo milestone sounds** play at 10X, 20X, 30X, etc.
 - **10 Color Tiers**:
   - 10X: Cyan
   - 20X: Green
@@ -274,6 +291,7 @@ waveframe/
 │   │   ├── gestureRecognizer.ts # Gesture recognition
 │   │   ├── gameStore.ts         # State management
 │   │   ├── storage.ts           # Persistence
+│   │   ├── sounds.ts            # Audio feedback
 │   │   └── constants.ts         # Tunables
 │   ├── main.ts                  # Entry point
 │   └── styles.css               # Global styles
@@ -309,6 +327,11 @@ window.gestureRecognizer.recognizeGesture(landmarks);
 ```
 
 ## Troubleshooting
+
+**No sound effects:**
+- Sound requires user interaction to initialize (click/keypress)
+- Check browser audio permissions and volume
+- Some browsers may block audio autoplay
 
 **Camera not working:**
 - Ensure HTTPS (or localhost for dev)

@@ -21,6 +21,7 @@ import type { ConfirmModal } from './ConfirmModal';
 import { initTracker, stopTracker, hasHand, getFps, setLowPowerMode, getLandmarks, startTracking } from '../services/tracker';
 import { recognizeGesture } from '../services/gestureRecognizer';
 import { dispatch, getState, subscribe } from '../services/gameStore';
+import { soundManager } from '../services/sounds';
 
 export interface PlayScreenProps {
   onQuit: () => void;
@@ -266,6 +267,9 @@ export function createPlayScreen(_props: PlayScreenProps): PlayScreen {
                   
                   showingFeedback = true;
                   gestureHoldFrames = 0;
+                  
+                  // Play success sound
+                  soundManager.playSuccess();
                   
                   feedbackFlash?.update({
                     visible: true,

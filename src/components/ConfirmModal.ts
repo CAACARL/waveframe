@@ -1,5 +1,6 @@
 import './ConfirmModal.css';
 import { createButton } from './Button';
+import { soundManager } from '../services/sounds';
 
 export interface ConfirmModalProps {
   title: string;
@@ -40,11 +41,15 @@ export function createConfirmModal(props: ConfirmModalProps): ConfirmModal {
   const cancelButton = createButton({
     text: 'Cancel',
     onClick: props.onCancel,
+    variant: 'white',
   });
 
   const confirmButton = createButton({
     text: 'Quit',
-    onClick: props.onConfirm,
+    onClick: () => {
+      soundManager.playQuit();
+      props.onConfirm();
+    },
     variant: 'danger-inverted',
   });
 

@@ -4,7 +4,7 @@ export interface ButtonProps {
   text: string;
   onClick: () => void;
   disabled?: boolean;
-  variant?: 'primary' | 'secondary' | 'danger' | 'danger-inverted';
+  variant?: 'primary' | 'secondary' | 'danger' | 'danger-inverted' | 'white';
 }
 
 export interface Button {
@@ -22,6 +22,8 @@ export function createButton(props: ButtonProps): Button {
     className = 'button button--danger';
   } else if (props.variant === 'danger-inverted') {
     className = 'button button--danger-inverted';
+  } else if (props.variant === 'white') {
+    className = 'button button--white';
   }
   el.className = className;
   el.textContent = props.text;
