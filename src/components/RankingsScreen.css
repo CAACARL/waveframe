@@ -320,3 +320,44 @@
   color: var(--text-primary);
   font-weight: 600;
 }
+
+/* MOBILE - Clean responsive design */
+@media (max-width: 1024px) {
+  .rankings-screen {
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)) 16px;
+    gap: 16px;
+  }
+
+  .rankings-screen__title {
+    font-size: 28px;
+    letter-spacing: 6px;
+  }
+
+  .rankings-screen__podium-block {
+    min-width: 90px;
+  }
+
+  .rankings-screen__table-container {
+    max-height: none;
+  }
+
+  .rankings-screen__row {
+    grid-template-columns: 50px 1fr 80px 70px 90px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 375px) {
+  .rankings-screen__title {
+    font-size: 24px;
+  }
+
+  .rankings-screen__podium-block {
+    min-width: 70px;
+  }
+
+  .rankings-screen__row {
+    grid-template-columns: 40px 1fr 65px 60px 80px;
+    font-size: 10px;
+  }
+}

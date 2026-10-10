@@ -51,3 +51,40 @@
   position: relative;
   z-index: 1;
 }
+
+/* MOBILE - Larger target preview for tall drawer */
+@media (max-width: 1024px) {
+  .target-preview {
+    gap: 14px;
+    padding: 20px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    border-width: 1px;
+  }
+
+  .target-preview__canvas {
+    width: 140px;
+    height: 140px;
+  }
+
+  .target-preview__name {
+    font-size: 14px;
+    letter-spacing: 2.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .target-preview {
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .target-preview__canvas {
+    width: 120px;
+    height: 120px;
+  }
+
+  .target-preview__name {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+}

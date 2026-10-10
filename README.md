@@ -46,7 +46,7 @@ npm run preview
 
 ## How to Play
 
-1. **Start Game**: Click "START GAME" from the main menu
+1. **Start Game**: Click "START" from the main menu
 2. **Camera Access**: Allow camera permissions when prompted
 3. **Wait for Countdown**: Loading indicator shows initialization progress (3, 2, 1, GO!)
 4. **Make Gestures**: 
@@ -66,7 +66,7 @@ npm run preview
 
 - **Space**: Start game from menu or restart from game over
 - **Escape**: Return to menu from any screen
-- **Click START GAME**: Start game from menu
+- ** GAME**: Start game from menu
 - **Click RANKINGS**: View leaderboard with top 10 performances
 - **Click EXIT**: Close the application
 - **Mouse/Touch**: Navigate all UI elements

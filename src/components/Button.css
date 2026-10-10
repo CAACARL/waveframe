@@ -194,3 +194,28 @@
 .button--white:active {
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* MOBILE - Better touch targets */
+@media (max-width: 1024px) {
+  .button {
+    padding: 16px 48px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 14px 40px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 375px) {
+  .button {
+    padding: 12px 36px;
+    font-size: 12px;
+  }
+}

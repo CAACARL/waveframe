@@ -56,13 +56,8 @@ export function createGameOverScreen(props: GameOverScreenProps): GameOverScreen
     variant: 'secondary',
   });
 
-  const hint = document.createElement('p');
-  hint.className = 'game-over-screen__hint';
-  hint.textContent = 'Press Space to play again or Escape for menu';
-
   controls.appendChild(restartButton.el);
   controls.appendChild(menuButton.el);
-  controls.appendChild(hint);
 
   el.appendChild(title);
   el.appendChild(scores);

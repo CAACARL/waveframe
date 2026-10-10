@@ -38,13 +38,7 @@ export function createMenuScreen(props: MenuScreenProps): MenuScreen {
     onClick: props.onStart,
   });
 
-  const hint = document.createElement("p");
-  hint.style.color = "var(--text-secondary)";
-  hint.style.fontSize = "14px";
-  hint.textContent = "CLICK START OR PRESS SPACE TO BEGIN";
-
   controls.appendChild(startButton.el);
-  controls.appendChild(hint);
 
   el.appendChild(title);
   el.appendChild(instructions);
@@ -56,13 +50,7 @@ export function createMenuScreen(props: MenuScreenProps): MenuScreen {
   rankingsBadge.textContent = "RANKINGS";
   rankingsBadge.onclick = props.onShowRankings;
 
-  const exitBadge = document.createElement("div");
-  exitBadge.className = "menu-screen__badge menu-screen__badge--exit";
-  exitBadge.textContent = "EXIT";
-  exitBadge.onclick = props.onExit;
-
   el.appendChild(rankingsBadge);
-  el.appendChild(exitBadge);
 
   // Footer with legal links
   const footer = document.createElement("div");

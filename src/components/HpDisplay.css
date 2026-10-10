@@ -97,3 +97,53 @@
     opacity: 0.6;
   }
 }
+
+/* MOBILE - Compact HP display */
+@media (max-width: 1024px) {
+  .hp-display {
+    padding: 8px 12px;
+    gap: 6px;
+    min-width: auto;
+    flex: 1;
+    clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+    border-width: 1px;
+  }
+
+  .hp-display::before {
+    font-size: 7px;
+    left: 8px;
+    padding: 1px 4px;
+  }
+
+  .hp-display__label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .hp-display__value {
+    font-size: 22px;
+  }
+
+  .hp-display__bar {
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hp-display {
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .hp-display__label {
+    font-size: 7px;
+  }
+
+  .hp-display__value {
+    font-size: 18px;
+  }
+
+  .hp-display__bar {
+    height: 5px;
+  }
+}

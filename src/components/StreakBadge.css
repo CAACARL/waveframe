@@ -377,3 +377,23 @@
   0% { filter: hue-rotate(0deg); }
   100% { filter: hue-rotate(360deg); }
 }
+
+/* MOBILE - Compact streak badge */
+@media (max-width: 1024px) {
+  .streak-badge {
+    padding: 8px 16px;
+    font-size: 14px;
+    gap: 6px;
+    clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+    border-width: 1px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .streak-badge {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 4px;
+  }
+}

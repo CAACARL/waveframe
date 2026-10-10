@@ -89,3 +89,42 @@
   background: rgba(255, 71, 87, 0.3);
   transform: translateX(0);
 }
+
+/* MOBILE - Simplified quit button without mount */
+@media (max-width: 1024px) {
+  .quit-button-container {
+    flex-direction: column;
+  }
+
+  .quit-button__mount {
+    display: none;
+  }
+
+  .quit-button__arm {
+    margin: 0;
+  }
+
+  .quit-button {
+    padding: 8px 16px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+    border-width: 1px;
+  }
+
+  .quit-button::before {
+    display: none;
+  }
+
+  .quit-button:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .quit-button {
+    padding: 6px 12px;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}

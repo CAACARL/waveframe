@@ -28,6 +28,14 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0.7;
+  will-change: transform;
+}
+
+/* Ensure mobile has proper overflow handling for animations */
+@media (max-width: 1024px) {
+  .menu-screen::before {
+    opacity: 0.5;
+  }
 }
 
 .menu-screen::after {
@@ -119,24 +127,6 @@
 .menu-screen__badge--rankings:active {
   transform: translateY(0);
   box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-}
-
-.menu-screen__badge--exit {
-  right: 20px;
-  color: var(--accent-danger);
-  border: 1px solid var(--accent-danger);
-  background: rgba(255, 71, 87, 0.1);
-}
-
-.menu-screen__badge--exit:hover {
-  background: rgba(255, 71, 87, 0.2);
-  box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
-  transform: translateY(-2px);
-}
-
-.menu-screen__badge--exit:active {
-  transform: translateY(0);
-  box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
 }
 
 .menu-screen__title {
@@ -274,4 +264,67 @@
 .menu-screen__link:hover {
   opacity: 1;
   text-decoration: underline;
+}
+
+/* MOBILE REDESIGN - iPhone SE baseline */
+@media (max-width: 1024px) {
+  .menu-screen {
+    gap: 24px;
+    padding: max(20px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom)) 16px;
+  }
+
+  .menu-screen__title {
+    font-size: 40px;
+    letter-spacing: 6px;
+    padding: 16px 32px;
+  }
+
+  .menu-screen__instructions {
+    max-width: 90%;
+    font-size: 12px;
+    padding: 16px 24px;
+  }
+
+  .menu-screen__badge {
+    top: max(16px, env(safe-area-inset-top));
+  }
+
+  .menu-screen__footer {
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+
+  .menu-screen__controls {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-screen {
+    gap: 20px;
+  }
+
+  .menu-screen__title {
+    font-size: 34px;
+    letter-spacing: 5px;
+    padding: 14px 28px;
+  }
+
+  .menu-screen__instructions {
+    font-size: 11px;
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .menu-screen__title {
+    font-size: 30px;
+    letter-spacing: 4px;
+    padding: 12px 24px;
+  }
+
+  .menu-screen__instructions {
+    font-size: 10px;
+    padding: 12px 18px;
+  }
 }

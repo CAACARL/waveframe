@@ -79,3 +79,47 @@
     0 0 15px rgba(0, 217, 255, 0.4),
     inset 0 0 15px rgba(0, 217, 255, 0.1);
 }
+
+/* MOBILE - Compact status bar */
+@media (max-width: 1024px) {
+  .status-bar {
+    padding: 8px 10px;
+    gap: 6px;
+    min-width: auto;
+    clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  }
+
+  .status-bar__left {
+    gap: 4px;
+  }
+
+  .status-bar__indicator {
+    font-size: 8px;
+    gap: 4px;
+  }
+
+  .status-bar__dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .status-bar__toggle {
+    padding: 4px 8px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-bar {
+    padding: 6px 8px;
+  }
+
+  .status-bar__indicator {
+    font-size: 7px;
+  }
+
+  .status-bar__toggle {
+    padding: 3px 6px;
+    font-size: 7px;
+  }
+}

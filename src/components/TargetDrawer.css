@@ -81,3 +81,70 @@
 .target-drawer .target-preview::before {
   display: none; /* Hide the label inside since we have it in the header */
 }
+
+/* MOBILE - Tall slim bar below camera, above HUD */
+@media (max-width: 1024px) {
+  .target-drawer {
+    position: fixed;
+    bottom: auto;
+    top: 70%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: auto;
+    min-height: 200px;
+    border: 2px solid var(--accent-primary);
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    z-index: 90;
+    animation: fade-in 0.4s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  .target-drawer__header {
+    padding: 10px 16px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    border-bottom-width: 1px;
+  }
+
+  .target-drawer__header::before {
+    width: 12px;
+    height: 12px;
+  }
+
+  .target-drawer__content {
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .target-drawer {
+    width: 240px;
+    min-height: 180px;
+  }
+
+  .target-drawer__header {
+    padding: 8px 14px;
+    font-size: 8px;
+  }
+
+  .target-drawer__content {
+    padding: 20px 16px;
+    min-height: 140px;
+  }
+}

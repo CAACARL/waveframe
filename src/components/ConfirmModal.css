@@ -101,3 +101,44 @@
   position: relative;
   z-index: 1;
 }
+
+/* MOBILE - Better modal */
+@media (max-width: 1024px) {
+  .confirm-modal-overlay {
+    padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)) 12px;
+  }
+
+  .confirm-modal {
+    max-width: 100%;
+  }
+
+  .confirm-modal__title {
+    font-size: 18px;
+  }
+
+  .confirm-modal__content {
+    font-size: 14px;
+    padding: 32px 24px;
+  }
+
+  .confirm-modal__actions {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .confirm-modal__actions .button {
+    flex: 1;
+    max-width: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .confirm-modal__title {
+    font-size: 16px;
+  }
+
+  .confirm-modal__content {
+    font-size: 13px;
+    padding: 28px 20px;
+  }
+}

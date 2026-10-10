@@ -1,5 +1,5 @@
-import './NameInputScreen.css';
-import { createButton } from './Button';
+import "./NameInputScreen.css";
+import { createButton } from "./Button";
 
 export interface NameInputScreenProps {
   score: number;
@@ -14,25 +14,25 @@ export interface NameInputScreen {
 }
 
 export function createNameInputScreen(props: NameInputScreenProps): NameInputScreen {
-  const el = document.createElement('div');
-  el.className = 'name-input-screen';
+  const el = document.createElement("div");
+  el.className = "name-input-screen";
 
-  const title = document.createElement('h1');
-  title.className = 'name-input-screen__title';
-  title.textContent = 'Mission Complete';
+  const title = document.createElement("h1");
+  title.className = "name-input-screen__title";
+  title.textContent = "Complete";
 
-  const stats = document.createElement('div');
-  stats.className = 'name-input-screen__stats';
+  const stats = document.createElement("div");
+  stats.className = "name-input-screen__stats";
 
-  const scoreDisplay = document.createElement('div');
-  scoreDisplay.className = 'name-input-screen__stat';
+  const scoreDisplay = document.createElement("div");
+  scoreDisplay.className = "name-input-screen__stat";
   scoreDisplay.innerHTML = `
     <span class="name-input-screen__stat-label">Final Score</span>
     <span class="name-input-screen__stat-value">${props.score.toLocaleString()}</span>
   `;
 
-  const streakDisplay = document.createElement('div');
-  streakDisplay.className = 'name-input-screen__stat';
+  const streakDisplay = document.createElement("div");
+  streakDisplay.className = "name-input-screen__stat";
   streakDisplay.innerHTML = `
     <span class="name-input-screen__stat-label">Max Streak</span>
     <span class="name-input-screen__stat-value">${props.streak}X</span>
@@ -41,26 +41,31 @@ export function createNameInputScreen(props: NameInputScreenProps): NameInputScr
   stats.appendChild(scoreDisplay);
   stats.appendChild(streakDisplay);
 
-  const nameSection = document.createElement('div');
-  nameSection.className = 'name-input-screen__name-section';
+  const nameSection = document.createElement("div");
+  nameSection.className = "name-input-screen__name-section";
 
-  const nameLabel = document.createElement('div');
-  nameLabel.className = 'name-input-screen__name-label';
-  nameLabel.textContent = 'ENTER YOUR NAME FOR LEADERBOARD';
+  const nameLabel = document.createElement("div");
+  nameLabel.className = "name-input-screen__name-label";
+  nameLabel.textContent = "ENTER YOUR NAME FOR LEADERBOARD";
 
-  const nameInput = document.createElement('input');
-  nameInput.className = 'name-input-screen__name-input';
-  nameInput.type = 'text';
-  nameInput.placeholder = 'Anonymous';
+  const nameInput = document.createElement("input");
+  nameInput.className = "name-input-screen__name-input";
+  nameInput.type = "text";
+  nameInput.placeholder = "Anonymous";
   nameInput.maxLength = 20;
-  nameInput.autocomplete = 'off';
+  nameInput.autocomplete = "off";
 
   const saveButton = createButton({
-    text: 'Save & Continue',
+    text: "Save & Continue",
     onClick: () => {
-      const name = nameInput.value.trim() || 'Anonymous';
-      console.log('NameInputScreen: Save button clicked with name:', name);
-      console.log('NameInputScreen: Calling onSaveName with score:', props.score, 'streak:', props.streak);
+      const name = nameInput.value.trim() || "Anonymous";
+      console.log("NameInputScreen: Save button clicked with name:", name);
+      console.log(
+        "NameInputScreen: Calling onSaveName with score:",
+        props.score,
+        "streak:",
+        props.streak,
+      );
       props.onSaveName(name);
     },
   });
@@ -70,8 +75,8 @@ export function createNameInputScreen(props: NameInputScreenProps): NameInputScr
   nameSection.appendChild(saveButton.el);
 
   // Handle Enter key
-  nameInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+  nameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
       saveButton.el.click();
     }
   });

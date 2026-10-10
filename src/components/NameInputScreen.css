@@ -123,3 +123,98 @@
   color: var(--text-dim);
   opacity: 0.5;
 }
+
+/* MOBILE - Responsive layout */
+@media (max-width: 1024px) {
+  .name-input-screen {
+    padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom)) 16px;
+    gap: 24px;
+  }
+
+  .name-input-screen__title {
+    font-size: 28px;
+    letter-spacing: 4px;
+    padding: 16px 24px;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  }
+
+  .name-input-screen__stats {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .name-input-screen__stat {
+    width: 100%;
+    padding: 16px 20px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .name-input-screen__stat-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .name-input-screen__stat-value {
+    font-size: 32px;
+  }
+
+  .name-input-screen__name-section {
+    width: 100%;
+    max-width: 320px;
+    padding: 24px 20px;
+    gap: 16px;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  }
+
+  .name-input-screen__name-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .name-input-screen__name-input {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px 20px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+}
+
+@media (max-width: 480px) {
+  .name-input-screen {
+    gap: 20px;
+  }
+
+  .name-input-screen__title {
+    font-size: 24px;
+    letter-spacing: 3px;
+    padding: 14px 20px;
+  }
+
+  .name-input-screen__stat-value {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 375px) {
+  .name-input-screen__title {
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 12px 16px;
+  }
+
+  .name-input-screen__stat-label {
+    font-size: 9px;
+  }
+
+  .name-input-screen__stat-value {
+    font-size: 26px;
+  }
+
+  .name-input-screen__name-label {
+    font-size: 10px;
+  }
+}
