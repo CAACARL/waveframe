@@ -87,7 +87,7 @@
   .target-drawer {
     position: fixed;
     bottom: auto;
-    top: 70%;
+    top: 78%;
     left: 50%;
     right: auto;
     transform: translate(-50%, -50%);

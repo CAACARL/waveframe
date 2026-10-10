@@ -37,6 +37,12 @@
   letter-spacing: 2px;
   z-index: 15;
   animation: blink 2s infinite;
+  display: none;
+}
+
+/* Only show LIVE FEED when video is active */
+.camera-stage:has(.camera-stage__video)::after {
+  display: block;
 }
 
 .camera-stage__placeholder {
@@ -142,8 +148,14 @@
     padding: 3px 6px;
   }
 
+  /* Hide LIVE FEED on placeholder/staging screen to avoid overlap */
+  .camera-stage:has(.camera-stage__placeholder)::after {
+    display: none;
+  }
+
   /* Only center LIVE FEED during active gameplay, not on placeholder */
   .camera-stage:has(.camera-stage__video)::after {
+    display: block;
     top: 10px;
     left: 50%;
     right: auto;
